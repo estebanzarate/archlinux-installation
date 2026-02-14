@@ -20,3 +20,7 @@ sudo pacman -S git kitty neovim openvpn polybar virtualbox-guest-utils
 ```bash
 sudo systemctl enable --now vboxservice
 ```
+
+```bash
+mkdir -p $HOME/.config/{bspwm,kitty,nvim,polybar,sxhkd}
+```
