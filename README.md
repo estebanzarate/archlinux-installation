@@ -28,6 +28,7 @@ sudo systemctl enable --now vboxservice
 
 ```bash
 mkdir -p $HOME/.config/{bspwm,kitty,nvim,polybar,sxhkd}
+mkdir $HOME/.config/polybar/scripts
 ```
 
 ```bash
