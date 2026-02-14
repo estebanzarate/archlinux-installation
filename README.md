@@ -8,12 +8,13 @@
 - `kitty`
 - `neovim`
 - [NvChad](https://nvchad.com/docs/quickstart/install/)
+- `openvpn`
 - `polybar`
 - `type`
 - `virtualbox-guest-utils`
 
 ```bash
-sudo pacman -S git kitty neovim polybar virtualbox-guest-utils
+sudo pacman -S git kitty neovim openvpn polybar virtualbox-guest-utils
 ```
 
 ```bash
