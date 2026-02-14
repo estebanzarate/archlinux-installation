@@ -29,3 +29,11 @@ sudo systemctl enable --now vboxservice
 ```bash
 mkdir -p $HOME/.config/{bspwm,kitty,nvim,polybar,sxhkd}
 ```
+
+```bash
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+cd ..
+rm -rf paru
+```
