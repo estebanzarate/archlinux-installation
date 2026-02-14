@@ -37,3 +37,7 @@ makepkg -si
 cd ..
 rm -rf paru
 ```
+
+```bash
+paru -S burpsuite
+```
