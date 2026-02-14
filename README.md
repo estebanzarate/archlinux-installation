@@ -12,10 +12,11 @@
 - `polybar`
 - `type`
 - `virtualbox-guest-utils`
+- `xclip`
 - `xorg-xset`
 
 ```bash
-sudo pacman -S git kitty neovim openvpn polybar virtualbox-guest-utils xorg-xset
+sudo pacman -S git kitty neovim openvpn polybar virtualbox-guest-utils xclip xorg-xset
 ```
 
 ```bash
