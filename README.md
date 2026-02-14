@@ -29,6 +29,8 @@ sudo systemctl enable --now vboxservice
 ```bash
 mkdir -p $HOME/.config/{bspwm,kitty,nvim,polybar,sxhkd}
 mkdir $HOME/.config/polybar/scripts
+touch $HOME/.config/polybar/scripts/{target.sh,target.txt,vpn.sh,}
+chmod +x $HOME/.config/polybar/scripts/{target.sh,vpn.sh}
 ```
 
 ```bash
