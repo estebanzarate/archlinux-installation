@@ -6,6 +6,7 @@
 
 - `base-devel`
 - `firefox` (option 10 ttf-dejavu)
+- `ffuf`
 - `git`
 - `hydra`
 - `kitty`
@@ -43,7 +44,7 @@ rm -rf paru
 ```
 
 ```bash
-paru -S arc-gtk-theme burpsuite
+paru -S arc-gtk-theme burpsuite ffuf
 ```
 
 `/etc/lightdm/lightdm-gtk-greeter.conf`
