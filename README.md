@@ -7,6 +7,7 @@
 - `base-devel`
 - `firefox` (option 10 ttf-dejavu)
 - `git`
+- `hydra`
 - `kitty`
 - `neovim`
 - [NvChad](https://nvchad.com/docs/quickstart/install/)
@@ -19,7 +20,7 @@
 - `xorg-xset`
 
 ```bash
-sudo pacman -S base-devel firefox git kitty neovim openvpn polybar rust virtualbox-guest-utils xclip xorg-xset
+sudo pacman -S base-devel firefox git hydra kitty neovim openvpn polybar rust virtualbox-guest-utils xclip xorg-xset
 ```
 
 ```bash
