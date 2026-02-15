@@ -53,3 +53,7 @@ paru -S arc-gtk-theme burpsuite
 #user-background=
 theme-name=Arc-Dark
 ```
+
+Repos
+
+- [SecLists](https://github.com/danielmiessler/SecLists.git)
