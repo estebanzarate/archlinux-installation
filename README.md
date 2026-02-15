@@ -42,5 +42,5 @@ rm -rf paru
 ```
 
 ```bash
-paru -S burpsuite
+paru -S arc-gtk-theme burpsuite
 ```
