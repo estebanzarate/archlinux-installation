@@ -44,3 +44,12 @@ rm -rf paru
 ```bash
 paru -S arc-gtk-theme burpsuite
 ```
+
+`/etc/lightdm/lightdm-gtk-greeter.conf`
+
+```bash
+[greeter]
+#background=
+#user-background=
+theme-name=Arc-Dark
+```
