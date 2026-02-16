@@ -16,6 +16,7 @@
 - [NvChad](https://nvchad.com/docs/quickstart/install/)
 - `openbsd-netcat`
 - `openvpn`
+- `perl-image-exiftool`
 - `polybar`
 - `rust`
 - `type`
@@ -24,7 +25,7 @@
 - `xorg-xset`
 
 ```bash
-sudo pacman -S base-devel firefox git hashcat hydra john kitty neovim openbsd-netcat openvpn polybar rust virtualbox-guest-utils xclip xorg-xset
+sudo pacman -S base-devel firefox git hashcat hydra john kitty neovim openbsd-netcat openvpn perl-image-exiftool polybar rust virtualbox-guest-utils xclip xorg-xset
 ```
 
 ```bash
