@@ -20,12 +20,13 @@
 - `polybar`
 - `rust`
 - `type`
+- `unzip`
 - `virtualbox-guest-utils`
 - `xclip`
 - `xorg-xset`
 
 ```bash
-sudo pacman -S base-devel firefox git hashcat hydra john kitty neovim openbsd-netcat openvpn perl-image-exiftool polybar rust virtualbox-guest-utils xclip xorg-xset
+sudo pacman -S base-devel firefox git hashcat hydra john kitty neovim openbsd-netcat openvpn perl-image-exiftool polybar rust unzip virtualbox-guest-utils xclip xorg-xset
 ```
 
 ```bash
