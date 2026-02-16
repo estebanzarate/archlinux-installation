@@ -14,6 +14,7 @@
 - `hydra`
 - `john`
 - `kitty`
+- `less`
 - `neovim`
 - [NvChad](https://nvchad.com/docs/quickstart/install/)
 - `openbsd-netcat`
@@ -28,7 +29,7 @@
 - `xorg-xset`
 
 ```bash
-sudo pacman -S base-devel bat binutils firefox git hashcat hydra john kitty neovim openbsd-netcat openvpn perl-image-exiftool polybar rust unzip virtualbox-guest-utils xclip xorg-xset
+sudo pacman -S base-devel bat binutils firefox git hashcat hydra john kitty less neovim openbsd-netcat openvpn perl-image-exiftool polybar rust unzip virtualbox-guest-utils xclip xorg-xset
 ```
 
 ```bash
