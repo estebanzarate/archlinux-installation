@@ -6,6 +6,7 @@
 
 - `base-devel`
 - `bat`
+- `binutils`
 - `firefox` (option 10 ttf-dejavu)
 - `ffuf`
 - `git`
@@ -27,7 +28,7 @@
 - `xorg-xset`
 
 ```bash
-sudo pacman -S base-devel bat firefox git hashcat hydra john kitty neovim openbsd-netcat openvpn perl-image-exiftool polybar rust unzip virtualbox-guest-utils xclip xorg-xset
+sudo pacman -S base-devel bat binutils firefox git hashcat hydra john kitty neovim openbsd-netcat openvpn perl-image-exiftool polybar rust unzip virtualbox-guest-utils xclip xorg-xset
 ```
 
 ```bash
