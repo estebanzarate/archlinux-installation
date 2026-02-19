@@ -16,6 +16,7 @@
 - `kitty`
 - `less`
 - `neovim`
+- `netexec`
 - `nmap`
 - [NvChad](https://nvchad.com/docs/quickstart/install/)
 - `openbsd-netcat`
@@ -55,7 +56,7 @@ rm -rf paru
 ```
 
 ```bash
-paru -S arc-gtk-theme burpsuite ffuf
+paru -S arc-gtk-theme burpsuite ffuf netexec
 ```
 
 `/etc/lightdm/lightdm-gtk-greeter.conf`
