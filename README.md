@@ -51,6 +51,11 @@ chmod +x $HOME/.config/polybar/scripts/{target.sh,vpn.sh}
 ```
 
 ```bash
+cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/
+cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
+```
+
+```bash
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
