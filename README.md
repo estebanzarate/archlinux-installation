@@ -12,6 +12,7 @@
 - `git`
 - `hashcat`
 - `hydra`
+- `impacket`
 - `john`
 - `kitty`
 - `less`
@@ -34,7 +35,7 @@
 - `xorg-xset`
 
 ```bash
-sudo pacman -S base-devel bat binutils firefox git hashcat hydra john kitty less neovim nmap openbsd-netcat openvpn perl-image-exiftool polybar radare2 rust smbclient unzip virtualbox-guest-utils wpscan xclip xorg-xset
+sudo pacman -S base-devel bat binutils firefox git hashcat hydra impacket john kitty less neovim nmap openbsd-netcat openvpn perl-image-exiftool polybar radare2 rust smbclient unzip virtualbox-guest-utils wpscan xclip xorg-xset
 ```
 
 ```bash
