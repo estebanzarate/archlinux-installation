@@ -9,7 +9,7 @@ alias burp='/usr/bin/burpsuite > /dev/null 2>&1 & disown'
 alias fire='/usr/bin/firefox > /dev/null 2>&1 & disown'
 PS1='\[\e[32m\][ \[\e[0m\]\[\e[38;2;59;113;202m\]\w\[\e[0m\]\[\e[32m\] ]\[\e[0m\] \[\e[38;2;159;166;178m\]❯❯\[\e[0m\] '
 
-# Sets or clears the target IP displayed in Polybar
+# Sets or clears the target IP (and optional port) displayed in Polybar
 target(){
     local target_file="$HOME/.config/polybar/scripts/target.txt"
 
@@ -17,9 +17,13 @@ target(){
         # No arguments — clear the target
         echo "" > "$target_file"
     elif [[ $# -eq 1 ]]; then
+        # Split IP and optional port
+        local ip="${1%%:*}"
+        local port="${1##*:}"
+        [[ "$ip" == "$port" ]] && port=""
+
         # Validate IP format with regex
-        if [[ "$1" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
-            local ip="$1"
+        if [[ "$ip" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
             local valid=true
             # Validate each octet is between 0 and 255
             IFS='.' read -ra octets <<< "$ip"
@@ -29,28 +33,39 @@ target(){
                     break
                 fi
             done
+
+            # Validate port if provided
+            if [[ -n "$port" ]] && ! [[ "$port" =~ ^[0-9]+$ && $port -ge 1 && $port -le 65535 ]]; then
+                echo "Error: invalid port (must be between 1 and 65535)"
+                return 1
+            fi
+
             if $valid; then
                 echo "$1" > "$target_file"
             else
                 echo "Error: invalid IP (octets must be between 0 and 255)"
             fi
         else
-            echo "Error: '$1' is not a valid IP address"
-            echo "Usage: target [ip]"
-            echo "  target 10.10.10.10  → set target IP in Polybar"
-            echo "  target              → clear target IP from Polybar"
+            echo "Error: '$ip' is not a valid IP address"
+            echo "Usage: target [ip] or target [ip:port]"
+            echo "  target 10.10.10.10        → set target IP in Polybar"
+            echo "  target 10.10.10.10:8080   → set target IP and port in Polybar"
+            echo "  target                    → clear target from Polybar"
         fi
     else
-        echo "Usage: target [ip]"
-        echo "  target 10.10.10.10  → set target IP in Polybar"
-        echo "  target              → clear target IP from Polybar"
+        echo "Usage: target [ip] or target [ip:port]"
+        echo "  target 10.10.10.10        → set target IP in Polybar"
+        echo "  target 10.10.10.10:8080   → set target IP and port in Polybar"
+        echo "  target                    → clear target from Polybar"
     fi
 }
 
-# Extracts open ports from a .gnmap scan file
+# Extracts open ports from any nmap output file (.gnmap, .nmap, .xml)
 ports(){
-    local usage="Usage: ports <file.gnmap>
-  ports lookup.gnmap   → returns open ports as comma-separated list (e.g. 22,80,443)"
+    local usage="Usage: ports <file>
+  ports lookup.gnmap   → parses grepable nmap output
+  ports lookup.nmap    → parses normal nmap output
+  ports lookup.xml     → parses XML nmap output"
 
     if [[ $# -eq 0 ]]; then
         echo "Error: no file specified"
@@ -73,7 +88,23 @@ ports(){
     fi
 
     local result
-    result=$(grep -oP '\d{1,5}/open' "$file" | awk -F'/' '{print $1}' | sort -un | xargs | tr ' ' ',')
+
+    case "$file" in
+        *.gnmap)
+            result=$(grep -oP '\d{1,5}/open' "$file" | awk -F'/' '{print $1}' | sort -un | xargs | tr ' ' ',')
+            ;;
+        *.nmap)
+            result=$(grep -oP '^\s*\d{1,5}/\w+\s+open' "$file" | grep -oP '^\s*\d+' | tr -d ' ' | sort -un | xargs | tr ' ' ',')
+            ;;
+        *.xml)
+            result=$(grep 'state="open"' "$file" | grep -oP 'portid="\K\d+' | sort -un | xargs | tr ' ' ',')
+            ;;
+        *)
+            echo "Error: unrecognized file extension (expected .gnmap, .nmap or .xml)"
+            echo "$usage"
+            return 1
+            ;;
+    esac
 
     if [[ -z "$result" ]]; then
         echo "No open ports found in '$file'"
@@ -85,6 +116,26 @@ ports(){
     if command -v xclip &>/dev/null; then
         echo -n "$result" | xclip -selection clipboard
     else
-      echo "[!] xclip not found — install it with: sudo pacman -S xclip"
+        echo "[!] xclip not found — install it with: sudo pacman -S xclip"
+    fi
+}
+
+# Obfuscates sensitive data (flags, passwords, users, etc.) and copies to clipboard
+mask(){
+    if [[ $# -eq 0 ]]; then
+        echo "Usage: mask <value>"
+        return 1
+    fi
+
+    local input="$1"
+    local masked
+    masked=$(printf '%0.s*' $(seq 1 ${#input}))
+
+    echo "$masked"
+
+    if command -v xclip &>/dev/null; then
+        echo -n "$masked" | xclip -selection clipboard
+    else
+        echo "[!] xclip not found — install it with: sudo pacman -S xclip"
     fi
 }
