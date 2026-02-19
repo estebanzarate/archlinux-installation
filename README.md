@@ -76,6 +76,14 @@ paru -S arc-gtk-theme burpsuite ffuf netexec
 theme-name=Arc-Dark
 ```
 
-Repos
+## Repos
 
 - [SecLists](https://github.com/danielmiessler/SecLists.git)
+
+## Others config
+
+### Firefox
+
+- `about:config`
+- `browser.fixup.domainsuffixwhitelist.htb`, `browser.fixup.domainsuffixwhitelist.thm`
+- `true`
