@@ -4,6 +4,7 @@
 
 ## Tools
 
+- `aws-cli-v2`
 - `base-devel`
 - `bat`
 - `binutils`
@@ -36,7 +37,7 @@
 - `xorg-xset`
 
 ```bash
-sudo pacman -S base-devel bat binutils firefox git hashcat hydra impacket john kitty less neovim nmap openbsd-netcat openvpn perl-image-exiftool pocl polybar radare2 rust smbclient unzip virtualbox-guest-utils wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils firefox git hashcat hydra impacket kitty less neovim nmap openbsd-netcat openvpn perl-image-exiftool pocl polybar radare2 rust smbclient unzip virtualbox-guest-utils wpscan xclip xorg-xset
 ```
 
 ```bash
@@ -74,6 +75,16 @@ paru -S arc-gtk-theme burpsuite ffuf netexec
 #background=
 #user-background=
 theme-name=Arc-Dark
+```
+
+### John The Ripper
+
+```bash
+git clone https://github.com/openwall/john.git
+cd john
+./configure && make
+cd ..
+sudo mv john /opt
 ```
 
 ## Repos
