@@ -9,6 +9,12 @@ pacman -Sy archinstall
 archinstall
 ```
 
+- **Archinstall language**: `English`
+- **Locales**:
+  - **Keyboard layout**: `la-latin1`
+- **Mirrors and repositories**:
+  - **Select regions**: `Brazil`
+
 ## Tools
 
 - `aws-cli-v2`
