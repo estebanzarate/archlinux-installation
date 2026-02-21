@@ -2,6 +2,8 @@
 
 <img width="600" height="199" alt="archlinux-logo-light-90dpi" src="https://github.com/user-attachments/assets/4a251114-a303-493b-80aa-6089db3cc82d" />
 
+Create a new machine in VirtualBox
+
 ```bash
 loadkeys la-latin1
 setfont ter-120b
@@ -30,8 +32,24 @@ archinstall
   - **Audio**: `pipewire`
 - **Network configuration**: `Copy ISO network configuration to installation`
 - **Timezone**: `America/Argentina/Buenos_Aires`
-
 - **Install**
+- **Exit archinstall**
+- `poweroff`
+
+Right click on the new VM created, select `settings`
+- **General**:
+  - **Features**:
+    - **Shared Clipboard**: `Bidirectional`
+- **System**:
+  - **Boot Device Order (BIOS only)**:
+    - Hard Disk [1]
+    - Unselect `Floppy` and `Optical`
+- **Storage**:
+  - **Controller: IDE**:
+    - Right click on `archlinux.iso`
+      - Remove attachment
+- **Network Attached to**: `Bridged Adapter`
+- Click OK to finish
 
 ## Tools
 
