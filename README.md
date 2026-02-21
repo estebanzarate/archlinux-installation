@@ -5,6 +5,7 @@
 ```bash
 loadkeys la-latin1
 setfont ter-120b
+pacman -Sy archinstall
 ```
 
 ## Tools
