@@ -81,6 +81,7 @@ Right click on the new VM created, select `settings`
 - `rust`
 - `smbclient`
 - `tcpdump`
+- `tree`
 - `type`
 - `unzip`
 - `virtualbox-guest-utils`
@@ -89,7 +90,7 @@ Right click on the new VM created, select `settings`
 - `xorg-xset`
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat binutils firefox git hashcat hydra impacket jadx kitty less metasploit neovim nmap openbsd-netcat openvpn perl-image-exiftool pocl polybar radare2 rust smbclient tcpdump unzip virtualbox-guest-utils wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils firefox git hashcat hydra impacket jadx kitty less metasploit neovim nmap openbsd-netcat openvpn perl-image-exiftool pocl polybar radare2 rust smbclient tcpdump tree unzip virtualbox-guest-utils wpscan xclip xorg-xset
 ```
 
 ```bash
