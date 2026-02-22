@@ -63,6 +63,7 @@ Right click on the new VM created, select `settings`
 - `hashcat`
 - `hydra`
 - `impacket`
+- `jadx`
 - `john`
 - `kitty`
 - `less`
@@ -88,7 +89,7 @@ Right click on the new VM created, select `settings`
 - `xorg-xset`
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat binutils firefox git hashcat hydra impacket kitty less metasploit neovim nmap openbsd-netcat openvpn perl-image-exiftool pocl polybar radare2 rust smbclient tcpdump unzip virtualbox-guest-utils wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils firefox git hashcat hydra impacket jadx kitty less metasploit neovim nmap openbsd-netcat openvpn perl-image-exiftool pocl polybar radare2 rust smbclient tcpdump unzip virtualbox-guest-utils wpscan xclip xorg-xset
 ```
 
 ```bash
