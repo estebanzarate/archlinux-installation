@@ -11,6 +11,6 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-/usr/bin/VBoxClient --clipboard &
+pkill -x VBoxClient; sleep 1 && VBoxClient-all &
 $HOME/.config/polybar/launch.sh &
 xset r rate 250 25
