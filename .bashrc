@@ -139,3 +139,138 @@ mask(){
         echo "[!] xclip not found — install it with: sudo pacman -S xclip"
     fi
 }
+
+# Python venv manager
+venv(){
+    local venv_dir="venv"
+    local libs=()
+
+    # Parse -l flag and collect libraries
+    local args=()
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -l)
+                shift
+                while [[ $# -gt 0 && "$1" != -* ]]; do
+                    libs+=("$1")
+                    shift
+                done
+                ;;
+            *) args+=("$1"); shift ;;
+        esac
+    done
+    set -- "${args[@]}"
+
+    case "$1" in
+        -d)
+            if [[ -z "$VIRTUAL_ENV" ]]; then
+                echo "Error: no active virtual environment"
+                return 1
+            fi
+            deactivate
+            ;;
+        -r)
+            if [[ ! -d "$venv_dir" ]]; then
+                echo "Error: no venv found in current directory"
+                return 1
+            fi
+            if [[ -n "$VIRTUAL_ENV" ]]; then
+                deactivate
+            fi
+            rm -rf "$venv_dir"
+            echo "[+] venv removed"
+            ;;
+        "")
+            if [[ -d "$venv_dir" ]]; then
+                source "$venv_dir/bin/activate"
+                echo "[+] venv activated"
+            else
+                python3 -m venv "$venv_dir"
+                source "$venv_dir/bin/activate"
+                echo "[+] venv created and activated"
+            fi
+
+            if [[ ${#libs[@]} -gt 0 ]]; then
+                echo "[*] Installing libraries: ${libs[*]}"
+                python3 -m pip install "${libs[@]}"
+            fi
+            ;;
+        *)
+            echo "Usage: venv [-d|-r] [-l lib1 lib2 ...]"
+            echo "  venv                          → create venv if needed, then activate"
+            echo "  venv -l requests flask        → create/activate and install libraries"
+            echo "  venv -d                       → deactivate current venv"
+            echo "  venv -r                       → deactivate (if active) and remove venv"
+            return 1
+            ;;
+    esac
+}
+
+# Downloads linpeas.sh to the current directory as lp.sh
+linpeas(){
+    local url="https://github.com/peass-ng/PEASS-ng/releases/download/20260212-43b28429/linpeas.sh"
+    local output="lp.sh"
+
+    if [[ -f "$output" ]]; then
+        echo "[!] $output already exists in current directory"
+        return 1
+    fi
+
+    echo "[*] Downloading linpeas..."
+    if curl -sL "$url" -o "$output"; then
+        chmod +x "$output"
+        echo "[+] Saved as $output"
+    else
+        echo "[-] Download failed"
+        rm -f "$output"
+        return 1
+    fi
+}
+
+# VPN manager for HTB, HTB Academy and THM
+vpn(){
+    local config_dir="$HOME/.config/vpn"
+    local usage="Usage: vpn -c <htb|htba|thm>
+  vpn -c htb   → connect to HackTheBox
+  vpn -c htba  → connect to HackTheBox Academy
+  vpn -c thm   → connect to TryHackMe"
+
+    if [[ $# -eq 0 ]]; then
+        echo "Error: no arguments provided"
+        echo "$usage"
+        return 1
+    fi
+
+    if [[ "$1" != "-c" ]]; then
+        echo "Error: unknown flag '$1'"
+        echo "$usage"
+        return 1
+    fi
+
+    if [[ -z "$2" ]]; then
+        echo "Error: no VPN specified"
+        echo "$usage"
+        return 1
+    fi
+
+    local config
+
+    case "$2" in
+        htb)  config="$config_dir/htb.ovpn"  ;;
+        htba) config="$config_dir/htba.ovpn" ;;
+        thm)  config="$config_dir/thm.ovpn"  ;;
+        *)
+            echo "Error: unknown VPN '$2' (expected htb, htba or thm)"
+            echo "$usage"
+            return 1
+            ;;
+    esac
+
+    if [[ ! -f "$config" ]]; then
+        echo "Error: config file not found at '$config'"
+        return 1
+    fi
+
+    echo "[*] Connecting to $2 VPN..."
+    sudo openvpn --config "$config"
+}
