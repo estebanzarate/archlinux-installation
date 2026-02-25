@@ -127,7 +127,7 @@ theme-name=Arc-Dark
 git clone https://github.com/openwall/john.git
 cd john/src
 ./configure && make
-cd ..
+cd ../..
 sudo mv john /opt
 ```
 
