@@ -62,7 +62,7 @@ archinstall
 - Login with credentials AGAIN
 
 ```bash
-mkdir ~/.config/{bspwm,sxhkd}
+mkdir -p ~/.config/{bspwm,sxhkd}
 cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
 cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
 sudo pacman -S kitty virtualbox-guest-utils
