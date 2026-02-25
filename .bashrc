@@ -7,6 +7,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias burp='/usr/bin/burpsuite > /dev/null 2>&1 & disown'
 alias fire='/usr/bin/firefox > /dev/null 2>&1 & disown'
+alias wire='/usr/bin/wireshark > /dev/null 2>&1 & disown'
 PS1='\[\e[32m\][ \[\e[0m\]\[\e[38;2;59;113;202m\]\w\[\e[0m\]\[\e[32m\] ]\[\e[0m\] \[\e[38;2;159;166;178m\]❯❯\[\e[0m\] '
 
 # Sets or clears the target IP (and optional port) displayed in Polybar
