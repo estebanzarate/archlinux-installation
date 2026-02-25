@@ -61,6 +61,7 @@ Right click on the new VM created, select `settings`
 - `firefox` (option 10 ttf-dejavu)
 - `ffuf`
 - `git`
+- `gtk3`
 - `hashcat`
 - `hydra`
 - `impacket`
@@ -95,7 +96,7 @@ Right click on the new VM created, select `settings`
 - `xorg-xset`
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git hashcat hydra impacket jadx kitty less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool pocl polybar qt5ct radare2 rust smbclient tcpdump tree unzip virtualbox-guest-utils wireshark-qt wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx kitty less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool pocl polybar qt5ct radare2 rust smbclient tcpdump tree unzip virtualbox-guest-utils wireshark-qt wpscan xclip xorg-xset
 ```
 
 ```bash
@@ -156,3 +157,25 @@ sudo mv john /opt
 - `about:config`
 - `browser.fixup.domainsuffixwhitelist.htb`, `browser.fixup.domainsuffixwhitelist.thm`
 - `true`
+
+### Wireshark
+
+`~/.xprofile`
+
+```bash
+export GTK_THEME=Arc-Dark
+export GTK2_RC_FILES=/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc
+export QT_QPA_PLATFORMTHEME=gtk3
+```
+
+`$HOME/.config/gtk-3.0/settings.ini`
+
+```bash
+[Settings]
+gtk-theme-name=Arc-Dark
+gtk-application-prefer-dark-theme=true
+```
+
+```bash
+sudo usermod -aG wireshark $USER
+```
