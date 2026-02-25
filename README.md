@@ -94,7 +94,10 @@ mkdir $HOME/.config/bspwm/scripts
 mkdir $HOME/.config/polybar/scripts
 touch $HOME/.config/polybar/scripts/{target.sh,target.txt,vpn.sh,}
 touch $HOME/.config/bspwm/scripts/bspwm_resize
-touch $HOME/.config/picom.conf
+touch $HOME/.config/polybar/launch.sh
+chmod +x $HOME/.config/polybar/launch.sh
+touch $HOME/.config/kitty/kitty.conf
+touch $HOME/.config/picom/picom.conf
 chmod +x $HOME/.config/polybar/scripts/{target.sh,vpn.sh}
 chmod +x $HOME/.config/bspwm/scripts/bspwm_resize
 ```
