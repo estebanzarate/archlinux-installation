@@ -2,15 +2,18 @@
 
 <img width="600" height="199" alt="archlinux-logo-light-90dpi" src="https://github.com/user-attachments/assets/4a251114-a303-493b-80aa-6089db3cc82d" />
 
-Create a new machine in VirtualBox
-
-<img width="424" height="231" alt="clipboard" src="https://github.com/user-attachments/assets/b8fa927f-f2ee-4778-b21e-1da4860ab3fd" />
-<br>
-<img width="310" height="311" alt="video" src="https://github.com/user-attachments/assets/bab721f6-9150-4494-8346-119a8e8e3ffe" />
+- Create a new VM in VirtualBox
+- Right click on the new VM created, select `settings`
 
 After create VM
 
-<img width="477" height="461" alt="boot" src="https://github.com/user-attachments/assets/04eea94b-0ab1-4d39-bd19-a9320e3b0dd8" />
+<img width="424" height="231" alt="clipboard" src="https://github.com/user-attachments/assets/b8fa927f-f2ee-4778-b21e-1da4860ab3fd" /><br>
+<img width="477" height="461" alt="boot" src="https://github.com/user-attachments/assets/04eea94b-0ab1-4d39-bd19-a9320e3b0dd8" /><br>
+<img width="310" height="311" alt="video" src="https://github.com/user-attachments/assets/8b69117c-929a-4dd3-90f4-3446dcfe9db4" /><br>
+<img width="475" height="329" alt="storage" src="https://github.com/user-attachments/assets/3dd10781-f38e-4eab-a309-88ed5b917061" /><br>
+
+- Start VM
+
 
 ```bash
 loadkeys la-latin1
@@ -44,20 +47,16 @@ archinstall
 - **Exit archinstall**
 - `poweroff`
 
-Right click on the new VM created, select `settings`
-- **General**:
-  - **Features**:
-    - **Shared Clipboard**: `Bidirectional`
-- **System**:
-  - **Boot Device Order (BIOS only)**:
-    - Hard Disk [1]
-    - Unselect `Floppy` and `Optical`
-- **Storage**:
-  - **Controller: IDE**:
-    - Right click on `archlinux.iso`
-      - Remove attachment
-- **Network Attached to**: `Bridged Adapter`
-- Click OK to finish
+- Start VM
+- Login with credentials 
+- Press `ctrl` + `alt` + `F2` to open a new console
+
+<img width="266" height="83" alt="login" src="https://github.com/user-attachments/assets/d964f004-87f0-498f-97f8-1f10b5fbe480" />
+
+- Login with credentials AGAIN
+
+```bash
+```
 
 ## Tools
 
