@@ -77,53 +77,9 @@ super + Return
 - Login with credentials
 - Press `super` + `Return` to open `kitty`
 
-## Tools
-
--  `aws-cli-v2`
-- `base-devel`
-- `bat`
-- `binutils`
-- `cmake`
-- `firefox` (option 10 ttf-dejavu)
-- `ffuf`
-- `git`
-- `gtk3`
-- `hashcat`
-- `hydra`
-- `impacket`
-- `jadx`
-- `john`
-- `kitty`
-- `less`
-- `medusa`
-- `metasploit`
-- `neovim`
-- `netexec`
-- `nmap`
-- [NvChad](https://nvchad.com/docs/quickstart/install/)
-- `openbsd-netcat`
-- `openvpn`
-- `perl-image-exiftool`
-- `picom`
-- `pocl`
-- `polybar`
-- `p7zip`
-- `qt5ct`
-- `radare2`
-- `rust`
-- `smbclient`
-- `tcpdump`
-- `tree`
-- `type`
-- `unzip`
-- `virtualbox-guest-utils`
-- `wireshark-qt`
-- `wpscan`
-- `xclip`
-- `xorg-xset`
-
 ```bash
 sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar qt5ct radare2 rust smbclient tcpdump tree unzip wireshark-qt wpscan xclip xorg-xset
+# Providers: ttf-dejavu, jre21-openjdk, qt6-multimedia-ffmpeg
 ```
 
 ```bash
@@ -206,3 +162,48 @@ gtk-application-prefer-dark-theme=true
 ```bash
 sudo usermod -aG wireshark $USER
 ```
+
+## Tools
+
+-  `aws-cli-v2`
+- `base-devel`
+- `bat`
+- `binutils`
+- `cmake`
+- `firefox` (option 5 ttf-dejavu)
+- `ffuf`
+- `git`
+- `gtk3`
+- `hashcat`
+- `hydra`
+- `impacket`
+- `jadx`
+- `john`
+- `kitty`
+- `less`
+- `medusa`
+- `metasploit`
+- `neovim`
+- `netexec`
+- `nmap`
+- [NvChad](https://nvchad.com/docs/quickstart/install/)
+- `openbsd-netcat`
+- `openvpn`
+- `perl-image-exiftool`
+- `picom`
+- `pocl`
+- `polybar`
+- `p7zip`
+- `qt5ct`
+- `radare2`
+- `rust`
+- `smbclient`
+- `tcpdump`
+- `tree`
+- `type`
+- `unzip`
+- `virtualbox-guest-utils`
+- `wireshark-qt`
+- `wpscan`
+- `xclip`
+- `xorg-xset`
