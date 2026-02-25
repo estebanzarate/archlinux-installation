@@ -83,7 +83,7 @@ super + Return
 - Login with credentials
 - Press `super` + `Return` to open `kitty`
 
-[!] **NOW YOU CAN COPY AND PASTE** [!]
+**NOW YOU CAN COPY AND PASTE**
 
 ```bash
 sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap nodejs openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar qt5ct radare2 rust smbclient tcpdump tree unzip wireshark-qt wpscan xclip xorg-xset
