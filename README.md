@@ -88,12 +88,13 @@ Right click on the new VM created, select `settings`
 - `type`
 - `unzip`
 - `virtualbox-guest-utils`
+- `wireshark-qt`
 - `wpscan`
 - `xclip`
 - `xorg-xset`
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git hashcat hydra impacket jadx kitty less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool pocl polybar radare2 rust smbclient tcpdump tree unzip virtualbox-guest-utils wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git hashcat hydra impacket jadx kitty less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool pocl polybar radare2 rust smbclient tcpdump tree unzip virtualbox-guest-utils wireshark-qt wpscan xclip xorg-xset
 ```
 
 ```bash
