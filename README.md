@@ -56,6 +56,10 @@ archinstall
 - Login with credentials AGAIN
 
 ```bash
+mkdir ~/.config/{bspwm,sxhkd}
+cp /usr/share/doc/bspwm/exampmles/bspwmrc ~/.config/bspwm/bspwmrc
+cp /usr/share/doc/bspwm/exampmles/sxhkdrc ~/.config/sxhkd/sxhkdrc
+sudo pacman -S kitty virtualbox-guest-utils
 ```
 
 ## Tools
@@ -104,7 +108,7 @@ archinstall
 - `xorg-xset`
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx kitty less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar qt5ct radare2 rust smbclient tcpdump tree unzip virtualbox-guest-utils wireshark-qt wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar qt5ct radare2 rust smbclient tcpdump tree unzip wireshark-qt wpscan xclip xorg-xset
 ```
 
 ```bash
@@ -112,7 +116,7 @@ sudo systemctl enable --now vboxservice
 ```
 
 ```bash
-mkdir -p $HOME/.config/{bspwm,kitty,nvim,polybar,sxhkd,picom}
+mkdir -p $HOME/.config/{kitty,nvim,polybar,picom}
 mkdir $HOME/.config/bspwm/scripts
 mkdir $HOME/.config/polybar/scripts
 touch $HOME/.config/polybar/scripts/{target.sh,target.txt,vpn.sh,}
