@@ -216,3 +216,6 @@ sudo usermod -aG wireshark $USER
 - `wpscan`
 - `xclip`
 - `xorg-xset`
+  
+<img width="1917" height="1076" alt="arch" src="https://github.com/user-attachments/assets/a50f29fb-7f0e-489a-b755-116dcdbd0428" />
+
