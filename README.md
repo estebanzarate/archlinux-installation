@@ -100,11 +100,6 @@ chmod +x $HOME/.config/bspwm/scripts/bspwm_resize
 ```
 
 ```bash
-cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/
-cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
-```
-
-```bash
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
