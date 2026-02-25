@@ -60,7 +60,18 @@ mkdir ~/.config/{bspwm,sxhkd}
 cp /usr/share/doc/bspwm/exampmles/bspwmrc ~/.config/bspwm/bspwmrc
 cp /usr/share/doc/bspwm/exampmles/sxhkdrc ~/.config/sxhkd/sxhkdrc
 sudo pacman -S kitty virtualbox-guest-utils
+sudo systemctl enable --now vboxservice
 ```
+
+Modify `terminal emulator` in `$HOME/.config/sxhkd/sxhkdrc` to `/usr/bin/kitty`
+
+```bash
+# terminal emulator
+super + Return
+  /usr/bin/kitty
+```
+
+Add `pkill -x VBoxClient; sleep 1 && VBoxClient-all &` to `$HOME/.config/bspwm/bspwmrc`
 
 ## Tools
 
@@ -109,10 +120,6 @@ sudo pacman -S kitty virtualbox-guest-utils
 
 ```bash
 sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar qt5ct radare2 rust smbclient tcpdump tree unzip wireshark-qt wpscan xclip xorg-xset
-```
-
-```bash
-sudo systemctl enable --now vboxservice
 ```
 
 ```bash
