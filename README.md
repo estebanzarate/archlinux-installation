@@ -44,7 +44,8 @@ archinstall
   - **Audio**: `pipewire`
 - **Network configuration**: `Copy ISO network configuration to installation`
 - **Timezone**: `America/Argentina/Buenos_Aires`
-- **Install**
+- **Install**:
+  - **The specified configuration will be applied. Would you like to continue?**: `Yes`
 - **Exit archinstall**
 - `poweroff`
 
