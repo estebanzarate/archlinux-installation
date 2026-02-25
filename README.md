@@ -5,6 +5,8 @@
 Create a new machine in VirtualBox
 
 <img width="424" height="231" alt="clipboard" src="https://github.com/user-attachments/assets/b8fa927f-f2ee-4778-b21e-1da4860ab3fd" />
+<br>
+<img width="310" height="311" alt="video" src="https://github.com/user-attachments/assets/bab721f6-9150-4494-8346-119a8e8e3ffe" />
 
 After create VM
 
