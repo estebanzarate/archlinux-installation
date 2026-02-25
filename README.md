@@ -5,10 +5,10 @@
 - Create a new VM in VirtualBox
 - Right click on the new VM created, select `settings`
 
-After create VM
-
 <img width="424" height="231" alt="clipboard" src="https://github.com/user-attachments/assets/b8fa927f-f2ee-4778-b21e-1da4860ab3fd" /><br>
 <img width="310" height="311" alt="video" src="https://github.com/user-attachments/assets/8b69117c-929a-4dd3-90f4-3446dcfe9db4" /><br>
+
+- Click OK to save settings
 
 - Start VM
 
@@ -50,6 +50,8 @@ archinstall
 
 <img width="477" height="461" alt="boot" src="https://github.com/user-attachments/assets/04eea94b-0ab1-4d39-bd19-a9320e3b0dd8" /><br>
 <img width="475" height="329" alt="storage" src="https://github.com/user-attachments/assets/3dd10781-f38e-4eab-a309-88ed5b917061" /><br>
+
+- Click OK to save settings
 
 - Start VM
 - Login with credentials 
