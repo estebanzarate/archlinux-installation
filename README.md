@@ -57,11 +57,13 @@ archinstall
 
 ```bash
 mkdir ~/.config/{bspwm,sxhkd}
-cp /usr/share/doc/bspwm/exampmles/bspwmrc ~/.config/bspwm/bspwmrc
-cp /usr/share/doc/bspwm/exampmles/sxhkdrc ~/.config/sxhkd/sxhkdrc
+cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
+cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
 sudo pacman -S kitty virtualbox-guest-utils
 sudo systemctl enable --now vboxservice
 ```
+
+Add `pkill -x VBoxClient; sleep 1 && VBoxClient-all &` to `$HOME/.config/bspwm/bspwmrc`
 
 Modify `terminal emulator` in `$HOME/.config/sxhkd/sxhkdrc` to `/usr/bin/kitty`
 
@@ -71,7 +73,9 @@ super + Return
   /usr/bin/kitty
 ```
 
-Add `pkill -x VBoxClient; sleep 1 && VBoxClient-all &` to `$HOME/.config/bspwm/bspwmrc`
+- Reboot
+- Login with credentials
+- Press `super` + `Return` to open `kitty`
 
 ## Tools
 
