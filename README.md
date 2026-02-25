@@ -4,6 +4,8 @@
 
 Create a new machine in VirtualBox
 
+<img width="424" height="231" alt="clipboard" src="https://github.com/user-attachments/assets/b8fa927f-f2ee-4778-b21e-1da4860ab3fd" />
+
 ```bash
 loadkeys la-latin1
 setfont ter-120b
