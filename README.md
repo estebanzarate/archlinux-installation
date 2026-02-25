@@ -117,6 +117,8 @@ paru -S arc-gtk-theme burpsuite ffuf netexec
 # Providers: arc-gtk-theme, ffuf, netexec
 ```
 
+### Greeter Dark Theme
+
 `/etc/lightdm/lightdm-gtk-greeter.conf`
 
 ```bash
@@ -125,6 +127,10 @@ paru -S arc-gtk-theme burpsuite ffuf netexec
 #user-background=
 theme-name=Arc-Dark
 ```
+
+### SecLists
+
+[SecLists](https://github.com/danielmiessler/SecLists.git)
 
 ### John The Ripper
 
@@ -136,12 +142,6 @@ cd ../..
 sudo mv john /opt
 ```
 
-## Repos
-
-- [SecLists](https://github.com/danielmiessler/SecLists.git)
-
-## Others config
-
 ### Firefox
 
 - `about:config`
@@ -149,6 +149,12 @@ sudo mv john /opt
 - `true`
 
 ### Wireshark
+
+```bash
+sudo usermod -aG wireshark $USER
+```
+
+### Dark Theme
 
 `$HOME/.xprofile`
 
@@ -164,10 +170,6 @@ export QT_QPA_PLATFORMTHEME=gtk3
 [Settings]
 gtk-theme-name=Arc-Dark
 gtk-application-prefer-dark-theme=true
-```
-
-```bash
-sudo usermod -aG wireshark $USER
 ```
 
 ## Tools
@@ -216,6 +218,3 @@ sudo usermod -aG wireshark $USER
 - `wpscan`
 - `xclip`
 - `xorg-xset`
-  
-<img width="1917" height="1076" alt="arch" src="https://github.com/user-attachments/assets/a50f29fb-7f0e-489a-b755-116dcdbd0428" />
-
