@@ -31,6 +31,7 @@ archinstall
   - **Partitioning**:
     - **Use a best-effort default partition layout**: `ATA VBOX HARDDISK`
       - **Filesystem**: `ext4`
+        - **Would you like to create a separate partition for /home?**: `No`
 - **Authentication**:
   - **User account**: `Add a user`
     - **Should "user" be a superuser (sudo)?**: `yes`
