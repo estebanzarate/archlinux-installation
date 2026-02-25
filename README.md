@@ -109,6 +109,7 @@ rm -rf paru
 
 ```bash
 paru -S arc-gtk-theme burpsuite ffuf netexec
+# Providers: arc-gtk-theme
 ```
 
 `/etc/lightdm/lightdm-gtk-greeter.conf`
