@@ -160,7 +160,7 @@ sudo mv john /opt
 
 ### Wireshark
 
-`~/.xprofile`
+`$HOME/.xprofile`
 
 ```bash
 export GTK_THEME=Arc-Dark
