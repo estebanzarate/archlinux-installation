@@ -86,7 +86,7 @@ super + Return
 **NOW YOU CAN COPY AND PASTE**
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap nodejs openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar qt5ct radare2 rust smbclient sqlmap tcpdump tree unzip wireshark-qt wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap nodejs npm openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar qt5ct radare2 rust smbclient sqlmap tcpdump tree unzip wireshark-qt wpscan xclip xorg-xset
 # Providers: ttf-dejavu, jre21-openjdk, qt6-multimedia-ffmpeg
 ```
 
@@ -209,6 +209,7 @@ gtk-application-prefer-dark-theme=true
 - `netexec`
 - `nmap`
 - `nodejs`
+- `npm`
 - [NvChad](https://nvchad.com/docs/quickstart/install/)
 - `openbsd-netcat`
 - `openvpn`
