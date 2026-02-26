@@ -142,6 +142,19 @@ cd ../..
 sudo mv john /opt
 ```
 
+### Docker
+
+```bash
+sudo pacman -S docker
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+sudo docker run hello-world
+sudo usermod -aG docker $USER
+sudo pacman -S docker-compose
+```
+
+Logout
+
 ### Firefox
 
 - `about:config`
