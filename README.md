@@ -113,7 +113,7 @@ rm -rf paru
 ```
 
 ```bash
-paru -S arc-gtk-theme burpsuite ffuf netexec
+paru -S arc-gtk-theme burpsuite ffuf netexec visual-studio-code-bin
 # Providers: arc-gtk-theme, ffuf, netexec
 ```
 
@@ -228,6 +228,7 @@ gtk-application-prefer-dark-theme=true
 - `type`
 - `unzip`
 - `virtualbox-guest-utils`
+- `visual-studio-code-bin`
 - `wireshark-qt`
 - `wpscan`
 - `xclip`
