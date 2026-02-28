@@ -130,7 +130,28 @@ theme-name=Arc-Dark
 
 ### SecLists
 
-[SecLists](https://github.com/danielmiessler/SecLists.git)
+[SecLists](https://github.com/danielmiessler/SecLists)
+
+```bash
+sudo mkdir /usr/share/wordlists
+sudo git clone https://github.com/danielmiessler/SecLists.git /usr/share/wordlists/seclists
+```
+
+### Searchsploit
+
+[exploitdb](https://gitlab.com/exploit-database/exploitdb)
+
+```bash
+git clone https://gitlab.com/exploit-database/exploitdb.git /opt/exploit-database
+ln -sf /opt/exploit-database/searchsploit /usr/local/bin/searchsploit
+cp -n /opt/exploit-database/.searchsploit_rc ~/
+nvim $HOME/.searchsploit_rc
+# Exploits
+path_array+=("/opt/exploit-database")
+
+# Shellcodes
+path_array+=("/opt/exploit-database")
+```
 
 ### John The Ripper
 
