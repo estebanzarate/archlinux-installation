@@ -1,3 +1,5 @@
+source $HOME/.config/colors/colors.sh
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -8,7 +10,9 @@ alias grep='grep --color=auto'
 alias burp='/usr/bin/burpsuite > /dev/null 2>&1 & disown'
 alias fire='/usr/bin/firefox > /dev/null 2>&1 & disown'
 alias wire='/usr/bin/wireshark > /dev/null 2>&1 & disown'
-PS1='\[\e[32m\][ \[\e[0m\]\[\e[38;2;59;113;202m\]\w\[\e[0m\]\[\e[32m\] ]\[\e[0m\] \[\e[38;2;159;166;178m\]❯❯\[\e[0m\] '
+alias tor='/usr/bin/torbrowser-launcher > /dev/null 2>&1 & disown'
+#PS1='\[\e[32m\][ \[\e[0m\]\[\e[38;2;59;113;202m\]\w\[\e[0m\]\[\e[32m\] ]\[\e[0m\] \[\e[38;2;159;166;178m\]❯❯\[\e[0m\] '
+PS1='\[\e[32m\][ \[\e[0m\]\[\e[38;2;59;113;202m\]\w\[\e[0m\]\[\e[32m\] ]\[\e[0m\] \[\e[38;2;159;166;178m\] \[\e[0m\] '
 
 # Sets or clears the target IP (and optional port) displayed in Polybar
 target(){
@@ -37,24 +41,25 @@ target(){
 
             # Validate port if provided
             if [[ -n "$port" ]] && ! [[ "$port" =~ ^[0-9]+$ && $port -ge 1 && $port -le 65535 ]]; then
-                echo "Error: invalid port (must be between 1 and 65535)"
+              echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: invalid port (must be between 1 and 65535)"
                 return 1
             fi
 
             if $valid; then
                 echo "$1" > "$target_file"
             else
-                echo "Error: invalid IP (octets must be between 0 and 255)"
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: invalid IP (octets must be between 0 and 255)"
             fi
         else
-            echo "Error: '$ip' is not a valid IP address"
-            echo "Usage: target [ip] or target [ip:port]"
+            echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: '$ip' is not a valid IP address"
+            echo -e "\nUsage: target [ip] or target [ip:port]"
             echo "  target 10.10.10.10        → set target IP in Polybar"
             echo "  target 10.10.10.10:8080   → set target IP and port in Polybar"
             echo "  target                    → clear target from Polybar"
+            echo
         fi
     else
-        echo "Usage: target [ip] or target [ip:port]"
+        echo -e "\nUsage: target [ip] or target [ip:port]"
         echo "  target 10.10.10.10        → set target IP in Polybar"
         echo "  target 10.10.10.10:8080   → set target IP and port in Polybar"
         echo "  target                    → clear target from Polybar"
@@ -69,22 +74,25 @@ ports(){
   ports lookup.xml     → parses XML nmap output"
 
     if [[ $# -eq 0 ]]; then
-        echo "Error: no file specified"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: no file specified\n"
         echo "$usage"
+        echo
         return 1
     fi
 
     if [[ $# -gt 1 ]]; then
-        echo "Error: too many arguments"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: too many arguments\n"
         echo "$usage"
+        echo
         return 1
     fi
 
     local file="$1"
 
     if [[ ! -f "$file" ]]; then
-        echo "Error: '$file' is not a valid file"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: '$file' is not a valid file\n"
         echo "$usage"
+        echo
         return 1
     fi
 
@@ -101,14 +109,16 @@ ports(){
             result=$(grep 'state="open"' "$file" | grep -oP 'portid="\K\d+' | sort -un | xargs | tr ' ' ',')
             ;;
         *)
-            echo "Error: unrecognized file extension (expected .gnmap, .nmap or .xml)"
+            echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: unrecognized file extension (expected .gnmap, .nmap or .xml)\n"
             echo "$usage"
+            echo
             return 1
             ;;
     esac
 
     if [[ -z "$result" ]]; then
-        echo "No open ports found in '$file'"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] No open ports found in '$file'\n"
+        echo
         return 1
     fi
 
@@ -117,27 +127,68 @@ ports(){
     if command -v xclip &>/dev/null; then
         echo -n "$result" | xclip -selection clipboard
     else
-        echo "[!] xclip not found — install it with: sudo pacman -S xclip"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] xclip not found — install it with: sudo pacman -S xclip"
+        echo
     fi
 }
 
 # Obfuscates sensitive data (flags, passwords, users, etc.) and copies to clipboard
 mask(){
+    local partial=false
+
+    if [[ "$1" == "-p" ]]; then
+        partial=true
+        shift
+    fi
+
     if [[ $# -eq 0 ]]; then
-        echo "Usage: mask <value>"
+        echo
+        echo "Usage: mask [-p] <value>"
+        echo "  mask <value>     → fully mask value"
+        echo "  mask -p <value>  → partially mask, keeping some chars at start and end"
+        echo
         return 1
     fi
 
     local input="$1"
+    local len=${#input}
     local masked
-    masked=$(printf '%0.s*' $(seq 1 ${#input}))
 
+    if $partial; then
+        local visible
+
+        if [[ $len -lt 6 ]]; then
+            visible=0
+        elif [[ $len -lt 11 ]]; then
+            visible=1
+        elif [[ $len -lt 21 ]]; then
+            visible=2
+        else
+            visible=3
+        fi
+
+        if [[ $visible -eq 0 ]]; then
+            masked=$(printf '%0.s*' $(seq 1 $len))
+        else
+            local start="${input:0:$visible}"
+            local end="${input: -$visible}"
+            local mid_len=$(( len - visible * 2 ))
+            local mid
+            mid=$(printf '%0.s*' $(seq 1 $mid_len))
+            masked="${start}${mid}${end}"
+        fi
+    else
+        masked=$(printf '%0.s*' $(seq 1 $len))
+    fi
+    
+    echo
     echo "$masked"
+    echo
 
     if command -v xclip &>/dev/null; then
         echo -n "$masked" | xclip -selection clipboard
     else
-        echo "[!] xclip not found — install it with: sudo pacman -S xclip"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] xclip not found — install it with: sudo pacman -S xclip\n"
     fi
 }
 
@@ -165,43 +216,45 @@ venv(){
     case "$1" in
         -d)
             if [[ -z "$VIRTUAL_ENV" ]]; then
-                echo "Error: no active virtual environment"
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: no active virtual environment\n"
                 return 1
             fi
             deactivate
             ;;
         -r)
             if [[ ! -d "$venv_dir" ]]; then
-                echo "Error: no venv found in current directory"
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: no venv found in current directory\n"
                 return 1
             fi
             if [[ -n "$VIRTUAL_ENV" ]]; then
                 deactivate
             fi
             rm -rf "$venv_dir"
-            echo "[+] venv removed"
+            echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] venv removed\n"
             ;;
         "")
             if [[ -d "$venv_dir" ]]; then
                 source "$venv_dir/bin/activate"
-                echo "[+] venv activated"
+                echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] venv activated\n"
             else
                 python3 -m venv "$venv_dir"
                 source "$venv_dir/bin/activate"
-                echo "[+] venv created and activated"
+                echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] venv created and activated\n"
             fi
 
             if [[ ${#libs[@]} -gt 0 ]]; then
-                echo "[*] Installing libraries: ${libs[*]}"
+                echo -e "\n[${ANSI_SUCCESS}*${COLOR_RESET}] Installing libraries: ${libs[*]}\n"
                 python3 -m pip install "${libs[@]}"
             fi
             ;;
         *)
+            echo
             echo "Usage: venv [-d|-r] [-l lib1 lib2 ...]"
             echo "  venv                          → create venv if needed, then activate"
             echo "  venv -l requests flask        → create/activate and install libraries"
             echo "  venv -d                       → deactivate current venv"
             echo "  venv -r                       → deactivate (if active) and remove venv"
+            echo
             return 1
             ;;
     esac
@@ -213,16 +266,16 @@ linpeas(){
     local output="lp.sh"
 
     if [[ -f "$output" ]]; then
-        echo "[!] $output already exists in current directory"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] $output already exists in current directory\n"
         return 1
     fi
 
-    echo "[*] Downloading linpeas..."
+    echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Downloading linpeas...\n"
     if curl -sL "$url" -o "$output"; then
         chmod +x "$output"
-        echo "[+] Saved as $output"
+        echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] Saved as $output\n"
     else
-        echo "[-] Download failed"
+        echo -e "\n[${ANSI_DANGER}-${COLOR_RESET}] Download failed\n"
         rm -f "$output"
         return 1
     fi
@@ -237,20 +290,26 @@ vpn(){
   vpn -c thm   → connect to TryHackMe"
 
     if [[ $# -eq 0 ]]; then
-        echo "Error: no arguments provided"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: no arguments provided"
+        echo
         echo "$usage"
+        echo
         return 1
     fi
 
     if [[ "$1" != "-c" ]]; then
-        echo "Error: unknown flag '$1'"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: unknown flag '$1'"
+        echo
         echo "$usage"
+        echo
         return 1
     fi
 
     if [[ -z "$2" ]]; then
-        echo "Error: no VPN specified"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: no VPN specified"
+        echo
         echo "$usage"
+        echo
         return 1
     fi
 
@@ -261,17 +320,19 @@ vpn(){
         htba) config="$config_dir/htba.ovpn" ;;
         thm)  config="$config_dir/thm.ovpn"  ;;
         *)
-            echo "Error: unknown VPN '$2' (expected htb, htba or thm)"
+            echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: unknown VPN '$2' (expected htb, htba or thm)"
+            echo
             echo "$usage"
+            echo
             return 1
             ;;
     esac
 
     if [[ ! -f "$config" ]]; then
-        echo "Error: config file not found at '$config'"
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: config file not found at '$config'\n"
         return 1
     fi
 
-    echo "[*] Connecting to $2 VPN..."
+    echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Connecting to $2 VPN...\n"
     sudo openvpn --config "$config"
 }
