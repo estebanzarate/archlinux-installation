@@ -238,6 +238,14 @@ dynamic_chain
 proxy_dns
 ```
 
+### enum4linux-ng
+
+```bash
+sudo pacman -S smbclient python-ldap3 python-yaml impacket
+git clone https://github.com/cddmp/enum4linux-ng /opt/enum4linux-ng
+sudo ln -s /opt/enum4linux-ng/enum4linux-ng.py /usr/local/bin/enum4linux-ng
+```
+
 ### Remove packages
 
 ```bash
@@ -253,6 +261,7 @@ sudo pacman -Rns rxvt-unicode xdo dmenu
 - `bat`
 - `binutils`
 - `cmake`
+- `enum4linux-ng` [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
 - `firefox` (option 5 ttf-dejavu)
 - `ffuf`
 - `fping`
