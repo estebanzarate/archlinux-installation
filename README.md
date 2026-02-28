@@ -167,6 +167,19 @@ Logout
 sudo usermod -aG wireshark $USER
 ```
 
+### Nvchad
+
+`$HOME/.local/share/nvim/lazy/NvChad/lua/nvchad/configs/cmp.lua ` avoid autocomplete
+
+```bash
+dofile(vim.g.base46_cache .. "cmp")
+
+local cmp = require "cmp"
+
+local options = {
+  completion = { completeopt = "menu,menuone", autocomplete = false },
+```
+
 ### Dark Theme
 
 `$HOME/.xprofile`
