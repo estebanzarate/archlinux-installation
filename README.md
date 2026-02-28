@@ -219,6 +219,15 @@ gtk-theme-name=Arc-Dark
 gtk-application-prefer-dark-theme=true
 ```
 
+### Tor
+
+```bash
+sudo pacman -S tor
+sudo systemctl start tor
+sudo systemctl status tor
+sudo systemctl stop tor
+```
+
 ### Remove packages
 
 ```bash
