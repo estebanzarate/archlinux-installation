@@ -96,7 +96,7 @@ mkdir $HOME/.config/bspwm/scripts
 mkdir $HOME/.config/polybar/scripts
 touch $HOME/.config/polybar/scripts/{target.sh,target.txt,vpn.sh,}
 touch $HOME/.config/bspwm/scripts/bspwm_resize
-touch $HOME/.config/polybar/launch.sh
+touch $HOME/.config/polybar/{launch.sh,env.sh}
 touch $HOME/.config/colors/{colors.ini,colors.sh,colors.py}
 chmod +x $HOME/.config/polybar/launch.sh
 touch $HOME/.config/kitty/kitty.conf
