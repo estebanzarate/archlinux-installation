@@ -228,6 +228,15 @@ sudo systemctl status tor
 sudo systemctl stop tor
 ```
 
+### Proxychains
+
+`/etc/proxychains.conf`
+
+```bash
+dynamic_chain
+proxy_dns
+```
+
 ### Remove packages
 
 ```bash
