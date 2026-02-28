@@ -91,12 +91,13 @@ sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat
 ```
 
 ```bash
-mkdir -p $HOME/.config/{kitty,nvim,polybar,picom}
+mkdir -p $HOME/.config/{kitty,nvim,polybar,picom,colors}
 mkdir $HOME/.config/bspwm/scripts
 mkdir $HOME/.config/polybar/scripts
 touch $HOME/.config/polybar/scripts/{target.sh,target.txt,vpn.sh,}
 touch $HOME/.config/bspwm/scripts/bspwm_resize
 touch $HOME/.config/polybar/launch.sh
+touch $HOME/.config/colors/{colors.ini,colors.sh,colors.py}
 chmod +x $HOME/.config/polybar/launch.sh
 touch $HOME/.config/kitty/kitty.conf
 touch $HOME/.config/picom/picom.conf
