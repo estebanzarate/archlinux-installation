@@ -276,6 +276,7 @@ sudo pacman -Rns rxvt-unicode xdo dmenu
 - `impacket`
 - `jadx`
 - `john`
+- `kerbrute` [kerbrute](https://github.com/ropnop/kerbrute)
 - `kitty`
 - `less`
 - `medusa`
