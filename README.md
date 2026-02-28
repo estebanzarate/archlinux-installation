@@ -86,7 +86,7 @@ super + Return
 **NOW YOU CAN COPY AND PASTE**
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap nodejs npm openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar proxychains-ng qt5ct radare2 rust smbclient socat sqlmap tcpdump tor torbrowser-launcher tree ttf-hack-nerd unzip wireshark-qt wpscan xclip xorg-xset
+sudo pacman -S aws-cli-v2 base-devel bat binutils cmake firefox fping git gtk3 hashcat hydra impacket jadx less medusa metasploit neovim nmap nodejs npm openbsd-netcat openvpn p7zip perl-image-exiftool picom pocl polybar proxychains-ng qt5ct radare2 rust smbclient socat sqlmap tcpdump tor torbrowser-launcher tree ttf-hack-nerd unzip wireshark-qt wpscan xclip xorg-xset
 # Providers: ttf-dejavu, jre21-openjdk, qt6-multimedia-ffmpeg
 ```
 
@@ -255,6 +255,7 @@ sudo pacman -Rns rxvt-unicode xdo dmenu
 - `cmake`
 - `firefox` (option 5 ttf-dejavu)
 - `ffuf`
+- `fping`
 - `git`
 - `gtk3`
 - `hashcat`
