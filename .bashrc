@@ -243,7 +243,7 @@ venv(){
             fi
 
             if [[ ${#libs[@]} -gt 0 ]]; then
-                echo -e "\n[${ANSI_SUCCESS}*${COLOR_RESET}] Installing libraries: ${libs[*]}\n"
+                echo -e "[${ANSI_SUCCESS}*${COLOR_RESET}] Installing libraries: ${libs[*]}\n"
                 python3 -m pip install "${libs[@]}"
             fi
             ;;
