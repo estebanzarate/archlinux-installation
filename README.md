@@ -219,6 +219,12 @@ gtk-theme-name=Arc-Dark
 gtk-application-prefer-dark-theme=true
 ```
 
+### Remove packages
+
+```bash
+sudo pacman -Rns rxvt-unicode xdo dmenu
+```
+
 ## Tools
 
 -  `aws-cli-v2`
