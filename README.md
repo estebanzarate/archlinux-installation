@@ -242,8 +242,12 @@ proxy_dns
 
 ```bash
 sudo pacman -S smbclient python-ldap3 python-yaml impacket
-git clone https://github.com/cddmp/enum4linux-ng /opt/enum4linux-ng
-sudo ln -s /opt/enum4linux-ng/enum4linux-ng.py /usr/local/bin/enum4linux-ng
+git clone https://github.com/cddmp/enum4linux-ng
+cd enum4linux-ng
+python3 -m venv venv
+source venv/bin/activate
+pip install wheel
+pip install -r requirements.txt
 ```
 
 ### Remove packages
