@@ -8,3 +8,23 @@ COLOR_LIGHT="#FBFBFB"
 COLOR_DARK="#332D2D"
 COLOR_PINK="#C2527A"
 COLOR_PURPLE="#7952B3"
+COLOR_DOG="#C68642"
+COLOR_ORANGE="#E8703A"
+
+COLOR_RESET="\033[0m"
+
+# -- ANSI (truecolor para bash scripts) --
+_hex() { local h="${1#"#"}"; echo "\e[38;2;$((16#${h:0:2}));$((16#${h:2:2}));$((16#${h:4:2}))m"; }
+
+ANSI_PRIMARY=$(_hex "$COLOR_PRIMARY")
+ANSI_SECONDARY=$(_hex "$COLOR_SECONDARY")
+ANSI_SUCCESS=$(_hex "$COLOR_SUCCESS")
+ANSI_DANGER=$(_hex "$COLOR_DANGER")
+ANSI_WARNING=$(_hex "$COLOR_WARNING")
+ANSI_INFO=$(_hex "$COLOR_INFO")
+ANSI_LIGHT=$(_hex "$COLOR_LIGHT")
+ANSI_DARK=$(_hex "$COLOR_DARK")
+ANSI_PINK=$(_hex "$COLOR_PINK")
+ANSI_PURPLE=$(_hex "$COLOR_PURPLE")
+ANSI_DOG=$(_hex "$COLOR_DOG")
+ANSI_ORANGE=$(_hex "$COLOR_ORANGE")
