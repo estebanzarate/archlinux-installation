@@ -274,7 +274,7 @@ sudo pacman -Rns rxvt-unicode xdo dmenu
 - `npm`
 - [NvChad](https://nvchad.com/docs/quickstart/install/)
 - `openbsd-netcat`
-- `openldap`
+- `openldap` [OpenLDAP](https://git.openldap.org/openldap/openldap)
 - `openvpn`
 - `p7zip`
 - `perl-image-exiftool`
