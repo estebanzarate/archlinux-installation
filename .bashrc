@@ -336,3 +336,26 @@ vpn(){
     echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Connecting to $2 VPN...\n"
     sudo openvpn --config "$config"
 }
+
+# Copies file contents to clipboard
+clip(){
+    if [[ $# -eq 0 ]]; then
+        echo
+        echo -e "Usage: clip <file>"
+        echo
+        return 1
+    fi
+
+    if [[ ! -f "$1" ]]; then
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: '$1' is not a valid file\n"
+        return 1
+    fi
+
+    if ! command -v xclip &>/dev/null; then
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] xclip not found — install it with: sudo pacman -S xclip\n"
+        return 1
+    fi
+
+    xclip -sel clip < "$1"
+    echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] '$1' copied to clipboard\n"
+}
