@@ -114,7 +114,7 @@ rm -rf paru
 ```
 
 ```bash
-paru -S arc-gtk-theme burpsuite ffuf netexec visual-studio-code-bin
+paru -S arc-gtk-theme burpsuite ffuf i3lock-fancy-git netexec visual-studio-code-bin
 # Providers: arc-gtk-theme, ffuf, netexec
 ```
 
@@ -273,6 +273,7 @@ sudo pacman -Rns rxvt-unicode xdo dmenu
 - `gtk3`
 - `hashcat`
 - `hydra`
+- `i3lock-fancy-git`
 - `impacket`
 - `jadx`
 - `john`
