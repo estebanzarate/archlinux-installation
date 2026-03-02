@@ -359,3 +359,71 @@ clip(){
     xclip -sel clip < "$1"
     echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] '$1' copied to clipboard\n"
 }
+
+# Wordlist manager — save and display frequently used SecLists paths
+lists(){
+    local store="$HOME/.config/wordlists.txt"
+    local usage="Usage: lists [-l <path>] [-r <path>]
+  lists              → show all saved wordlists
+  lists -l <path>    → add a wordlist path
+  lists -r <path>    → remove a wordlist path"
+
+    # Create store file if it doesn't exist
+    [[ ! -f "$store" ]] && touch "$store"
+
+    case "$1" in
+        "")
+            if [[ ! -s "$store" ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] No wordlists saved yet. Use: lists -l <path>\n"
+                return 0
+            fi
+            echo ""
+            echo -e "━━━ ${ANSI_SUCCESS}Saved wordlists${COLOR_RESET} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            local i=1
+            while IFS= read -r line; do
+                echo -e "[${ANSI_WARNING}$i${COLOR_RESET}] $line"
+                (( i++ ))
+            done < "$store"
+            echo ""
+            ;;
+        -l)
+            if [[ -z "$2" ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: no path provided\n"
+                echo "$usage"
+                echo
+                return 1
+            fi
+            local path="$2"
+            if [[ ! -f "$path" ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: '$path' does not exist\n"
+                return 1
+            fi
+            if grep -qxF "$path" "$store"; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] '$path' is already saved\n"
+                return 0
+            fi
+            echo "$path" >> "$store"
+            echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] Added: $path\n"
+            ;;
+        -r)
+            if [[ -z "$2" ]]; then
+                echo -e "[${ANSI_DANGER}!${COLOR_RESET}] Error: no path provided\n"
+                echo
+                echo "$usage"
+                return 1
+            fi
+            if ! grep -qxF "$2" "$store"; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: '$2' not found in saved lists\n"
+                return 1
+            fi
+            grep -vxF "$2" "$store" > "${store}.tmp"; mv "${store}.tmp" "$store"
+            echo -e "\n[${ANSI_SUCCESS}-${COLOR_RESET}] Removed: $2\n"
+            ;;
+        *)
+            echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: unknown flag '$1'\n"
+            echo "$usage"
+            echo
+            return 1
+            ;;
+    esac
+}
