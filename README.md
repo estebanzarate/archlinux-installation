@@ -258,6 +258,12 @@ sudo pacman -Rns rxvt-unicode xdo dmenu
 
 <img width="1907" height="1079" alt="arch" src="https://github.com/user-attachments/assets/601e0311-8627-4462-ad84-51e515b9055e" />
 
+### Install tools with Go
+
+```bash
+go install github.com/ropnop/kerbrute@latest
+```
+
 ## Tools
 
 -  `aws-cli-v2`
