@@ -114,7 +114,7 @@ rm -rf paru
 ```
 
 ```bash
-paru -S arc-gtk-theme burpsuite ruby-evil-winrm ffuf i3lock-fancy-git netexec visual-studio-code-bin
+paru -S arc-gtk-theme burpsuite ffuf i3lock-fancy-git netexec visual-studio-code-bin
 # Providers: arc-gtk-theme, ffuf, netexec
 ```
 
@@ -162,6 +162,12 @@ cd john/src
 ./configure && make
 cd ../..
 sudo mv john /opt
+```
+
+### Evil-winrm
+
+```bash
+gem install evil-winrm
 ```
 
 ### Docker
@@ -279,7 +285,7 @@ sudo git clone https://github.com/insidetrust/statistically-likely-usernames.git
 - `binutils`
 - `cmake`
 - `enum4linux-ng` [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
-- `evil-winrm`
+- `evil-winrm` [Evil-winrm](https://github.com/Hackplayers/evil-winrm)
 - `firefox` (option 5 ttf-dejavu)
 - `ffuf`
 - `fping`
