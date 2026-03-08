@@ -114,7 +114,7 @@ rm -rf paru
 ```
 
 ```bash
-paru -S arc-gtk-theme burpsuite ffuf i3lock-fancy-git ike-scan netexec visual-studio-code-bin
+paru -S arc-gtk-theme burpsuite ffuf i3lock-fancy-git ike-scan netexec visual-studio-code-bin wafw00f
 # Providers: arc-gtk-theme, ffuf, netexec
 ```
 
@@ -342,6 +342,7 @@ sudo git clone https://github.com/insidetrust/statistically-likely-usernames.git
 - `unzip`
 - `virtualbox-guest-utils`
 - `visual-studio-code-bin`
+- `wafw00f`
 - `wireshark-qt`
 - `wpscan`
 - `xclip`
