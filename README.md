@@ -86,7 +86,7 @@ super + Return
 **NOW YOU CAN COPY AND PASTE**
 
 ```bash
-sudo pacman -S aws-cli-v2 base-devel bat bettercap binutils cmake dig firefox fping git gobuster gtk3 hashcat hydra impacket jadx lds less man-db medusa metasploit neovim nfs-utils nmap nodejs npm openbsd-netcat openldap openvpn p7zip perl-image-exiftool php picom pocl polybar proxychains-ng qt5ct rabbitmq radare2 redis rsync rust rustscan smbclient socat sqlmap tcpdump tor torbrowser-launcher tree ttf-hack-nerd unzip wireshark-qt wpscan xclip xorg-xset zaproxy
+sudo pacman -S aws-cli-v2 base-devel bat bettercap binutils cmake dig firefox fping git gobuster gtk3 hashcat hydra impacket jadx lds less man-db medusa metasploit neovim nfs-utils nmap nodejs npm openbsd-netcat openldap openvpn p7zip perl-image-exiftool php picom plocate pocl polybar proxychains-ng qt5ct rabbitmq radare2 redis rsync rust rustscan smbclient socat sqlmap tcpdump tor torbrowser-launcher tree ttf-hack-nerd unzip wireshark-qt wpscan xclip xorg-xset zaproxy
 # Providers: ttf-dejavu, jre21-openjdk, qt6-multimedia-ffmpeg
 ```
 
@@ -322,6 +322,7 @@ sudo git clone https://github.com/insidetrust/statistically-likely-usernames.git
 - `perl-image-exiftool`
 - `php`
 - `picom`
+- `plocate`
 - `pocl`
 - `polybar`
 - `proxychains-ng`
