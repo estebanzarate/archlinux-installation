@@ -210,7 +210,7 @@ local options = {
 
 ### Cursor
 
-`mkdir -p ~/.local/share/icons/default`
+`mkdir -p $HOME/.local/share/icons/default`
 
 `$HOME/.local/share/icons/default/index.theme`
 
@@ -227,12 +227,19 @@ gtk-cursor-theme-name=Bibata-Modern-Classic
 gtk-cursor-theme-size=24
 ```
 
-`~/.config/gtk-4.0/settings.ini`
+`$HOME/.config/gtk-4.0/settings.ini`
 
 ```bash
 [Settings]
 gtk-cursor-theme-name=Bibata-Modern-Classic
 gtk-cursor-theme-size=24
+```
+
+`/usr/share/icons/default/index.theme`
+
+```bash
+[Icon Theme]
+Inherits=Bibata-Modern-Classic
 ```
 
 ### Dark Theme
