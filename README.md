@@ -114,7 +114,7 @@ rm -rf paru
 ```
 
 ```bash
-paru -S arc-gtk-theme burpsuite ffuf i3lock-fancy-git ike-scan netexec visual-studio-code-bin wafw00f
+paru -S arc-gtk-theme bibata-cursor-theme-bin burpsuite ffuf i3lock-fancy-git ike-scan netexec visual-studio-code-bin wafw00f
 # Providers: arc-gtk-theme, ffuf, netexec
 ```
 
