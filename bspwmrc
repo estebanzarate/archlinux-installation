@@ -16,3 +16,4 @@ pkill -x VBoxClient; sleep 1 && VBoxClient-all &
 source $HOME/.config/polybar/env.sh
 $HOME/.config/polybar/launch.sh &
 xset r rate 250 25
+xsetroot -cursor_name left_ptr &
