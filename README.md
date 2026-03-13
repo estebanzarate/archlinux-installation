@@ -208,6 +208,17 @@ local options = {
   completion = { completeopt = "menu,menuone", autocomplete = false },
 ```
 
+### Cursor
+
+`mkdir -p ~/.local/share/icons/default`
+
+`$HOME/.local/share/icons/default/index.theme`
+
+```bash
+[Icon Theme]
+Inherits=Bibata-Modern-Classic
+```
+
 ### Dark Theme
 
 `$HOME/.xprofile`
