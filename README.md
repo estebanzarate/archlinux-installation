@@ -219,6 +219,22 @@ local options = {
 Inherits=Bibata-Modern-Classic
 ```
 
+`$HOME/.config/gtk-3.0/settings.ini`
+
+```bash
+[Settings]
+gtk-cursor-theme-name=Bibata-Modern-Classic
+gtk-cursor-theme-size=24
+```
+
+`~/.config/gtk-4.0/settings.ini`
+
+```bash
+[Settings]
+gtk-cursor-theme-name=Bibata-Modern-Classic
+gtk-cursor-theme-size=24
+```
+
 ### Dark Theme
 
 `$HOME/.xprofile`
