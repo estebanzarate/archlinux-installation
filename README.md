@@ -86,7 +86,7 @@ super + Return
 **NOW YOU CAN COPY AND PASTE**
 
 ```bash
-sudo pacman -S apache aws-cli-v2 base-devel bat bettercap binutils cmake docker-buildx dig firefox fping git gobuster gtk3 hashcat hydra impacket ipcalc jadx lds less lxc man-db medusa metasploit mosquitto neovim nfs-utils nikto nmap nodejs npm openbsd-netcat openldap openvpn p7zip perl-image-exiftool perl-xml-writer php picom plocate pocl polybar proxychains-ng qt5ct rabbitmq radare2 redis rsync rust rustscan smbclient socat sqlmap tcpdump tor torbrowser-launcher tree ttf-hack-nerd unzip wireshark-qt wpscan xclip xorg-xset zaproxy
+sudo pacman -S apache aws-cli-v2 base-devel bat bettercap binutils cmake docker-buildx dig firefox fping git gobuster gtk3 hashcat hydra impacket ipcalc jadx lds less lxc man-db medusa metasploit mosquitto neovim nfs-utils nikto nmap nodejs npm openbsd-netcat openldap openvpn p7zip perl-image-exiftool perl-xml-writer php picom plocate pocl polybar proxychains-ng qt5ct rabbitmq radare2 redis rsync rust rustscan smbclient socat sqlmap tcpdump tor torbrowser-launcher tree ttf-hack-nerd unzip wireshark-qt wpscan xclip xorg-xset zaproxy zip
 # Providers: ttf-dejavu, jre21-openjdk, qt6-multimedia-ffmpeg
 ```
 
@@ -392,3 +392,4 @@ sudo git clone https://github.com/insidetrust/statistically-likely-usernames.git
 - `xclip`
 - `xorg-xset`
 - `zaproxy`
+- `zip`
