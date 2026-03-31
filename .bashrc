@@ -4,7 +4,7 @@ source $HOME/.config/colors/colors.sh
 [[ $- != *i* ]] && return
 
 export _JAVA_AWT_WM_NONREPARENTING=1
-export WPSCAN_API_TOKEN=at1sYrkvG9HzgWICSKr7QtFOuQh7nYlgZzlhsMYkss0
+export WPSCAN_API_TOKEN=at1*************************************ss0
 export DOCKER_BUILDKIT=1
 
 alias ls='ls --color=auto'
