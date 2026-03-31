@@ -296,7 +296,7 @@ python3 -m pip install -r requirements.txt
 sudo pacman -Rns rxvt-unicode xdo dmenu
 ```
 
-<img width="1907" height="1079" alt="arch" src="https://github.com/user-attachments/assets/601e0311-8627-4462-ad84-51e515b9055e" />
+<img width="1919" height="1079" alt="Screenshot 2026-03-30 214854" src="https://github.com/user-attachments/assets/c462e76e-a1a4-4025-944e-8fcd0b5b1baa" />
 
 ### Install tools with Go
 
