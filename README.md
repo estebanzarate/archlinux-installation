@@ -271,7 +271,7 @@ sudo systemctl stop tor
 
 ### Proxychains
 
-`/etc/proxychains.conf`
+`sudo nvim /etc/proxychains.conf`
 
 ```bash
 dynamic_chain
