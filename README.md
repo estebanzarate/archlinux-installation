@@ -235,7 +235,7 @@ gtk-cursor-theme-name=Bibata-Modern-Classic
 gtk-cursor-theme-size=24
 ```
 
-`/usr/share/icons/default/index.theme`
+`sudo nvim /usr/share/icons/default/index.theme`
 
 ```bash
 [Icon Theme]
