@@ -316,6 +316,14 @@ Agregar al `$PATH` `/etc/profile`
 append_path '$HOME/go/bin'
 ```
 
+### Git
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+git config --global core.autocrlf input
+```
+
 ## Tools
 
 - `apache`
