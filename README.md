@@ -311,6 +311,12 @@ sudo git clone https://github.com/danielmiessler/SecLists.git /usr/share/wordlis
 sudo git clone https://github.com/insidetrust/statistically-likely-usernames.git /usr/share/wordlists/statistically-likely-usernames
 ```
 
+Agregar al `$PATH` `/etc/profile`
+
+```bash
+append_path '$HOME/go/bin'
+```
+
 ## Tools
 
 - `apache`
