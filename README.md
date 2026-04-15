@@ -144,7 +144,7 @@ sudo git clone https://github.com/danielmiessler/SecLists.git /usr/share/wordlis
 
 ```bash
 sudo git clone https://gitlab.com/exploit-database/exploitdb.git /opt/exploit-database
-ln -sf /opt/exploit-database/searchsploit /usr/local/bin/searchsploit
+sudo ln -sf /opt/exploit-database/searchsploit /usr/local/bin/searchsploit
 cp -n /opt/exploit-database/.searchsploit_rc ~/
 nvim $HOME/.searchsploit_rc
 # Exploits
