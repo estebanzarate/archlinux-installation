@@ -307,7 +307,6 @@ go install github.com/ropnop/kerbrute@latest
 ### Wordlists
 
 ```bash
-sudo git clone https://github.com/danielmiessler/SecLists.git /usr/share/wordlists/seclists
 sudo git clone https://github.com/insidetrust/statistically-likely-usernames.git /usr/share/wordlists/statistically-likely-usernames
 ```
 
