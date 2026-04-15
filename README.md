@@ -115,7 +115,7 @@ rm -rf paru
 
 ```bash
 paru -S arc-gtk-theme bibata-cursor-theme-bin burpsuite ffuf i3lock-fancy-git ike-scan netexec opengrep semgrep-bin visual-studio-code-bin wafw00f
-# Providers: arc-gtk-theme, ffuf, netexec
+# Providers: arc-gtk-theme, ffuf, netexec, wafw00f
 ```
 
 ### Greeter Dark Theme
