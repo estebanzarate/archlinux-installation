@@ -323,6 +323,7 @@ append_path '/home/melvin/.local/share/gem/ruby/3.4.0/bin'
 git config --global user.name "Your Name"
 git config --global user.email "youremail@example.com"
 git config --global core.autocrlf input
+git config --global credential.helper store
 ```
 
 ## Tools
