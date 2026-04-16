@@ -314,6 +314,7 @@ Agregar al `$PATH` `/etc/profile`
 
 ```bash
 append_path '$HOME/go/bin'
+append_path '/home/melvin/.local/share/gem/ruby/3.4.0/bin'
 ```
 
 ### Git
